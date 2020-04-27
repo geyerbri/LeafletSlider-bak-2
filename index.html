@@ -84,7 +84,13 @@
             console.log(e.markers)
         });
 */
-            function onEachFeature(layerGroup, layer) { 
+
+        //Make sure to add the slider to the map ;-)
+        myMap.addControl(sliderControl);
+        //And initialize the slider
+        sliderControl.startSlider();
+    });
+	                function onEachFeature(layerGroup, layer) { 
         if (layerGroup.time && layerGroup.popup) { 
             layerGroup.on('layeradd', function(e) { 
 				layerGroup.setIcon(L.icon(layerGroup.myIcon));
@@ -93,12 +99,7 @@
 			});
 		}
     };  
-
-        //Make sure to add the slider to the map ;-)
-        myMap.addControl(sliderControl);
-        //And initialize the slider
-        sliderControl.startSlider();
-    });
+	layerGroup.addData(geoJSON);
     </script>
 </body>
 
