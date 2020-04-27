@@ -89,7 +89,6 @@
         myMap.addControl(sliderControl);
         //And initialize the slider
         sliderControl.startSlider();
-    });
 function onEachFeature(testLayer, layer) { 
         if (testLayer.time && testLayer.popup) { 
             testLayer.on('layeradd', function(e) { 
@@ -100,6 +99,7 @@ function onEachFeature(testLayer, layer) {
 		}
     };  
 testLayer.addData(geoJSON);
+    });
     </script>
 </body>
 
