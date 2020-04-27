@@ -66,11 +66,12 @@
         var testlayer = L.geoJson(json),
             sliderControl = L.control.sliderControl({
                 position: "topright",
-                layer: testlayer
+                layer: testlayer,
+                orderMarkers: true
             });
 
         //For a Range-Slider use the range property:
-        sliderControl = L.control.sliderControl({
+/*        sliderControl = L.control.sliderControl({
             position: "topright",
             layer: testlayer,
             range: true
@@ -80,7 +81,7 @@
         sliderControl.on('rangechanged',function (e) {
             console.log(e.markers)
         });
-
+*/
         //Make sure to add the slider to the map ;-)
         myMap.addControl(sliderControl);
         //And initialize the slider
