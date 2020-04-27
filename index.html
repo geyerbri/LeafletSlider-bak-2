@@ -86,7 +86,6 @@
 */
             function onEachFeature(layerGroup, layer) { 
         if (layerGroup.time && layerGroup.popup) { 
-            layerGroup.bindPopup('test'); 
             layerGroup.on('mouseover', function(e) { 
 				layerGroup.setIcon(L.icon(layerGroup.myIcon));
 				var content = layerGroup.popup;
