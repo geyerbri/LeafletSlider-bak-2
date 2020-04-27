@@ -71,8 +71,6 @@
                 alwaysShowDate: true,
                 timeStrLength: 4
             });
-    myMap.addControl(sliderControl);
-    sliderControl.startSlider();
 
     function onEachFeature(layerGroup, layer) { 
         if (layerGroup.time && layerGroup.popup) { 
@@ -84,10 +82,12 @@
 			});
 	}
     };  
+    myMap.addControl(sliderControl);
+    sliderControl.startSlider();
                 
 		                
     //Fetch some data from a GeoJSON file
-/*    $.getJSON("examples/points.json", function(json) {
+/*    $.getJSON(layerGroup, function(json) {
         var testlayer = L.geoJson(json),
             sliderControl = L.control.sliderControl({
                 position: "topright",
@@ -107,12 +107,13 @@
         sliderControl.on('rangechanged',function (e) {
             console.log(e.markers)
         });
-*/
+
         //Make sure to add the slider to the map ;-)
         myMap.addControl(sliderControl);
         //And initialize the slider
         sliderControl.startSlider();
     });
+*/
     </script>
 </body>
 
