@@ -34,27 +34,9 @@
         attribution: '&copy; <a href="https://osm.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(myMap);
 
-    var myIcon = L.icon({
-    	iconUrl: 'leaflet/images/bomb.png',
-    	iconSize: [38, 38],
-    	iconAnchor: [22, 94],
-    	popupAnchor: [-3, -76],
-    	shadowUrl: 'leaflet/images/marker-shadow.png',
-    	shadowSize: [38, 65],
-    	shadowAnchor: [8, 130]
-    });
+
     //Use usual LayerGroups instead of GeoJSON fetched markers
-    
-    var marker1 = L.marker([40.7115, -73.8716],{time: "1996/10/06", icon: myIcon, popup:'<b>October 6, 1992</b><br> Avengers gathered to counter-protest when the chair of community board 24 (Mary Cummins) had bussed in parents to do a protest about the Rainbow Curriculum. According to Maxine Wolfe, "We marched down the street in front of the Board of Ed, with the brass band in front, folled by a replica of our bomb corried by four women, surrounded by flags. The bomb and flags said "Lighten Up. Teach about Lesbians."'});
-    var marker2 = L.marker([40.650002, -73.949997],{time: "1992/10/06", icon: myIcon, popup:'<b>October 6, 1992</b><br> Avengers gathered to counter-protest when the chair of community board 24 (Mary Cummins) had bussed in parents to do a protest about the Rainbow Curriculum. According to Maxine Wolfe, "We marched down the street in front of the Board of Ed, with the brass band in front, folled by a replica of our bomb corried by four women, surrounded by flags. The bomb and flags said "Lighten Up. Teach about Lesbians."'});
-    var marker3 = L.marker([40.7128, - 74.0060],{time: "1992/10/29", icon: myIcon, popup:'<b>October 29, 1992</b><br>Held a press conference about the murders of Hattie Mae Cohens and Brian Mock, and "no on 9."'});
-    
-/*    
-    .bindPopup('<b>October 29, 1992</b><br>Held a press conference about the murders of Hattie Mae Cohens and Brian Mock, and "no on 9."')
-    .openPopup();
-    var marker4 = L.marker([40.7303, -74.0022],{icon: myIcon}).addTo(map)
-    .bindPopup('<b>October 30, 1992</b><br>As part of the Take Back the Night March, Avengers set up a shrine to Hattie Mae Cohens and Brian Mock, whose home had been set aflame in an anti-gay hate crime. When the March reached the shrine, Lesbian Avengers made a statement and eight women did a fire-eating ritual. "“We take the fire of action into our hearts and we take it into our bodies. . . our fear does not consume us," they said. After the March, the Avengers kept the shrine up until November 3rd, staffing 24 hours a day.')
-    .openPopup();
+    /*
     var marker1 = L.marker([51.933292258, 7.582512743], {time: "2013-01-22 08:42:26+01"});
     var marker2 = L.marker([51.9, 7.6], {time: "2013-01-22 10:00:26+01"});
     var marker3 = L.marker([51.7, 7.7], {time: "2013-01-22 10:03:29+01"});
@@ -71,37 +53,21 @@
       smoothFactor: 1
     });
     
-*/    
-    layerGroup = L.layerGroup([marker1, marker2, marker3]);
-    var sliderControl = L.control.sliderControl({
-                position: "topright",
-                layer: layerGroup,
-                alwaysShowDate: true,
-                timeStrLength: 4
-            });
-
-    function onEachFeature(layerGroup, layer) { 
-        if (layerGroup.time && layerGroup.popup) { 
-            layerGroup.bindPopup('test'); 
-            layerGroup.on('mouseover', function(e) { 
-				layerGroup.setIcon(L.icon(layerGroup.myIcon));
-				var content = layerGroup.popup;
-				layerGroup.bindPopup(content, {minWidth: 400, autoPanPadding: [10,80], closeButton: true});
-			});
-	}
-    };  
+    
+    layerGroup = L.layerGroup([marker1, marker2, marker3, polyline]);
+    var sliderControl = L.control.sliderControl({layer:layerGroup, follow: true});
     myMap.addControl(sliderControl);
     sliderControl.startSlider();
-                
-		                
+  */
+
+
     //Fetch some data from a GeoJSON file
-/*    $.getJSON(layerGroup, function(json) {
+    $.getJSON("examples/points.json", function(json) {
         var testlayer = L.geoJson(json),
             sliderControl = L.control.sliderControl({
                 position: "topright",
                 layer: testlayer,
-                alwaysShowDate: true,
-                timeStrLength: 4
+                orderMarkers: true
             });
 
         //For a Range-Slider use the range property:
@@ -115,13 +81,12 @@
         sliderControl.on('rangechanged',function (e) {
             console.log(e.markers)
         });
-
+*/
         //Make sure to add the slider to the map ;-)
         myMap.addControl(sliderControl);
         //And initialize the slider
         sliderControl.startSlider();
     });
-*/
     </script>
 </body>
 
