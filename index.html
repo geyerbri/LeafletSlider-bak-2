@@ -84,7 +84,7 @@
             console.log(e.markers)
         });
 */
-	                function onEachFeature(testLayer, layer) { 
+	                function onEachFeature('testLayer', layer) { 
         if (testLayer.time && testLayer.popup) { 
             testLayer.on('layeradd', function(e) { 
 				testLayer.setIcon(L.icon(testLayer.myIcon));
