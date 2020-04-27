@@ -74,7 +74,7 @@
     myMap.addControl(sliderControl);
     sliderControl.startSlider();
 
-    function onEachFeature('layerGroup', layer) { 
+    function onEachFeature('layerGroup', 'layer') { 
         if (layerGroup.time && layerGroup.popup) { 
             layerGroup.bindPopup('test'); 
             layerGroup.on('mouseover', function(e) { 
@@ -83,7 +83,7 @@
 				layerGroup.bindPopup(content, {minWidth: 400, autoPanPadding: [10,80], closeButton: true});
 			});
                 
-                
+		                
     //Fetch some data from a GeoJSON file
 /*    $.getJSON("examples/points.json", function(json) {
         var testlayer = L.geoJson(json),
