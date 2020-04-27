@@ -84,22 +84,21 @@
             console.log(e.markers)
         });
 */
+	                function onEachFeature(testLayer, layer) { 
+        if (testLayer.time && testLayer.popup) { 
+            testLayer.on('layeradd', function(e) { 
+				testLayer.setIcon(L.icon(testLayer.myIcon));
+				var content = testLayer.popup;
+				testLayer.bindPopup(content, {minWidth: 400, autoPanPadding: [10,80], closeButton: true});
+			});
+		}
+    };  
 
         //Make sure to add the slider to the map ;-)
         myMap.addControl(sliderControl);
         //And initialize the slider
         sliderControl.startSlider();
     });
-	                function onEachFeature(layerGroup, layer) { 
-        if (layerGroup.time && layerGroup.popup) { 
-            layerGroup.on('layeradd', function(e) { 
-				layerGroup.setIcon(L.icon(layerGroup.myIcon));
-				var content = layerGroup.popup;
-				layerGroup.bindPopup(content, {minWidth: 400, autoPanPadding: [10,80], closeButton: true});
-			});
-		}
-    };  
-	layerGroup.addData(geoJSON);
     </script>
 </body>
 
