@@ -7,7 +7,9 @@
                 "time": "1996/10/06",
                 icon: myIcon,
                 popup: '<b>October 6, 1992</b><br> Avengers gathered to counter-protest when the chair of community board 24 (Mary Cummins) had bussed in parents to do a protest about the Rainbow Curriculum. According to Maxine Wolfe, "We marched down the street in front of the Board of Ed, with the brass band in front, folled by a replica of our bomb corried by four women, surrounded by flags. The bomb and flags said "Lighten Up. Teach about Lesbians."'
-}, "geometry": {                "type": "Point",
+            }, 
+            "geometry": {        
+                "type": "Point",
                 "coordinates": [
                     7.582512743,
                     51.933292258,
@@ -19,7 +21,11 @@
             "type": "Feature",
             "properties": {
                 "time": "1992/10/06",
-                            icon: myIcon, popup: '<b>October 6, 1992</b><br> Avengers gathered to counter-protest when the chair of community board 24 (Mary Cummins) had bussed in parents to do a protest about the Rainbow Curriculum. According to Maxine Wolfe, "We marched down the street in front of the Board of Ed, with the brass band in front, folled by a replica of our bomb corried by four women, surrounded by flags. The bomb and flags said "Lighten Up. Teach about Lesbians."' }, "geometry": {                "type": "Point",
+                icon: myIcon, 
+                popup: '<b>October 6, 1992</b><br> Avengers gathered to counter-protest when the chair of community board 24 (Mary Cummins) had bussed in parents to do a protest about the Rainbow Curriculum. According to Maxine Wolfe, "We marched down the street in front of the Board of Ed, with the brass band in front, folled by a replica of our bomb corried by four women, surrounded by flags. The bomb and flags said "Lighten Up. Teach about Lesbians."' 
+            }, 
+            "geometry": {       
+                "type": "Point",
                 "coordinates": [
                     7.602516645,
                     51.94962073,
@@ -31,7 +37,11 @@
             "type": "Feature",
             "properties": {
                 "time": "1992/10/29",
-                            icon: myIcon, popup: '<b>October 29, 1992</b><br>Held a press conference about the murders of Hattie Mae Cohens and Brian Mock, and "no on 9."' }, "geometry": {                "type": "Point",
+                icon: myIcon, 
+                popup: '<b>October 29, 1992</b><br>Held a press conference about the murders of Hattie Mae Cohens and Brian Mock, and "no on 9."' 
+            }, 
+            "geometry": {
+                "type": "Point",
                 "coordinates": [
                     7.61132039,
                     51.967614681,
