@@ -74,7 +74,7 @@
     myMap.addControl(sliderControl);
     sliderControl.startSlider();
 
-    function onEachFeature('layerGroup', 'layer') { 
+    function onEachFeature(layerGroup, layer) { 
         if (layerGroup.time && layerGroup.popup) { 
             layerGroup.bindPopup('test'); 
             layerGroup.on('mouseover', function(e) { 
