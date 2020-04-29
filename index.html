@@ -54,13 +54,8 @@
     });
   */  
     
-layerGroup = L.layerGroup([marker1, marker2, marker3/*, polyline*/ ]);
-var sliderControl = L.control.sliderControl({
-	position: 'topright',
-	layer: 'layerGroup',
-	timeAttribute: 'time',
-	follow: true
-});
+layerGroup1 = L.layerGroup([marker1, marker2, marker3/*, polyline*/ ]);
+var sliderControl = L.control.sliderControl({layer:layerGroup1});
 myMap.addControl(sliderControl);
 sliderControl.startSlider();
 
