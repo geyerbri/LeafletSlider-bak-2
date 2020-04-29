@@ -53,8 +53,10 @@ var polyline = new L.Polyline(pointList, {
     smoothFactor: 1
 });
 
+var layerGroup1 = L.layerGroup([marker1, marker2, marker3 ] {'time': '2013-01-22 08:42:26+01'});
 
-layerGroup = L.layerGroup([marker1, marker2, marker3, polyline ]);
+layerGroup = L.layerGroup([layerGroup1, polyline ]);
+	    
 var sliderControl = L.control.sliderControl({layer:layerGroup});
 myMap.addControl(sliderControl);
 sliderControl.startSlider();
