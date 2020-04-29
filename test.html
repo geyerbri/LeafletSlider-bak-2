@@ -104,8 +104,8 @@ var basemap = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{
     accessToken: 'pk.eyJ1IjoiZGl4b25lbDciLCJhIjoiY2o4enpya2dvMnRlYzJxcDZjcWRwenZ1cSJ9.NqNl--HPrC6QXcClHCswfA'
 }).addTo(map);
 
-var y1992 = L.layerGroup().addTo(map);
-var y1993 = L.layerGroup().addTo(map);
+var y1992 = L.geoJSON().addTo(map);
+var y1993 = L.geoJSON().addTo(map);
 
 function add1992 (feature, layer) {
   y1992.addLayer(layer)
