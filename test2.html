@@ -68,7 +68,7 @@
 		}
 	    }
 	]
-	/*
+
 	// Create second dataset of linked markers
 	var points1993 = [
 	    {
@@ -96,7 +96,7 @@
 		}
 	    }			
 	]
-	*/
+
 	// Create map inside div with #myMap ID; set view 
 	var map1 = L.map('myMap').setView([40.7,-73.9], 11);
 	 
@@ -120,7 +120,6 @@
 		feature.properties.icon
 		// or define icon settings here
 		); */
-	    layer.defineProperty('feature', {'date': feature.properties.date});
 	    layer.bindPopup(content, {closeButton: true});
 	};
 	/* 
@@ -150,8 +149,7 @@
 	}
 	*/
 	// For single group, load dataset, popups, etc. into a geoJSON layer, then create a final layerGroup from it
-	var fullGroup1 = L.geoJSON(dataset1, addToGroup1);
-	var finalSingleGroup = L.layerGroup(fullGroup1);
+	L.geoJSON(dataset1, addToGroup1);
 	/*
 	// For multiple groups, remove function above and instead create new variables for each group, using their dataset and function 
 	var fullGroup1 = L.geoJSON(dataset1, addToGroup1);
@@ -162,7 +160,7 @@
 	// Create Slider
 	var sliderControl = L.control.sliderControl( {
 	    // Set layer below to EITHER the first layerGroup, from the be beginning, OR the final layerGroup containing the array
-	    layer: finalSingleGroup,
+	    layer: group1,
 	    alwaysShowDate: true,
 	    showAllOnStart: true
 	});
