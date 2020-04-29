@@ -54,11 +54,14 @@
     });
     
     
-    layerGroup = L.layerGroup([marker1, marker2, marker3, polyline]);
-    var sliderControl = L.control.sliderControl({layer:layerGroup, follow: true});
-    myMap.addControl(sliderControl);
-    sliderControl.startSlider();
-
+layerGroup = L.layerGroup([marker1, marker2, marker3, polyline ]);
+var sliderControl = L.control.sliderControl({
+	position: "topright",
+	layer:layerGroup,
+	follow: true
+});
+map.addControl(sliderControl);
+sliderControl.startSlider();
 
 /*
     //Fetch some data from a GeoJSON file
