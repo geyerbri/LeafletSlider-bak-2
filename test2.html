@@ -148,8 +148,8 @@
 	    onEachFeature: addToGroup2
 	}
 	*/
-	// For single group, load dataset, popups, etc. into that group
-	group1.geoJSON(dataset1, addToGroup1);
+	// For single group, load dataset, popups, etc. into a geoJSON layer
+	L.geoJSON(dataset1, addToGroup1).addTo(map1);
 	/*
 	// For multiple groups, remove function above and instead create new variables for each group, using their dataset and function 
 	var fullGroup1 = L.geoJSON(dataset1, addToGroup1);
