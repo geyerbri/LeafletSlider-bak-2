@@ -147,47 +147,6 @@ var sliderControl = L.control.sliderControl( {
 map.addControl(sliderControl);
 sliderControl.startSlider();
 
-/*
-    //Fetch some data from a GeoJSON file
-    $.getJSON("examples/points.json", function(json) {
-        var testlayer = L.geoJson(json),
-            sliderControl = L.control.sliderControl({
-                position: "topright",
-                layer: testlayer,
-	        alwaysShowDate: true,
-		timeStrLength: 4
-            });
-
-        //For a Range-Slider use the range property:
-/*        sliderControl = L.control.sliderControl({
-            position: "topright",
-            layer: testlayer,
-            alwaysShowDate: true,
-	    timeStrLength: 4
-        });
-
-
-        sliderControl.on('rangechanged',function (e) {
-            console.log(e.markers)
-        });
-
-
-        //Make sure to add the slider to the map ;-)
-        myMap.addControl(sliderControl);
-        //And initialize the slider
-        sliderControl.startSlider();
-function onEachFeature(testLayer, layer) { 
-        if (testLayer.time && testLayer.popup) { 
-            testLayer.on('layeradd', function(e) { 
-				testLayer.setIcon(L.icon(testLayer.myIcon));
-				var content = testLayer.popup;
-				testLayer.bindPopup(content, {minWidth: 400, autoPanPadding: [10,80], closeButton: true});
-			});
-		}
-    };  
-testLayer.addData(geoJSON);
-    });
-*/
     </script>
 </body>
 
