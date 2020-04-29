@@ -9,11 +9,6 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.6.0/leaflet.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.min.css" type="text/css">
-</head>
-
-<body>
-    <div id="avengersmap" style="width: 100%; height: 600px"></div>
-
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.6.0/leaflet.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js"></script>
@@ -22,130 +17,157 @@
     <!-- Include this library for mobile touch support  -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
 
-
+    <!-- Include SliderControl.js script -->
     <script src="src/SliderControl.js"></script>
+	
+    <!-- Style map -->
+    <style>
+	#myMap {
+	    width: 80%; 
+	    height: 600px;
+	    postion: relative;
+	    margins: auto;
+	}
+	</style>
+</head>
+
+<body>
+    
+    <!-- Add div to contain #myMap -->
+    <div id="myMap"></div>
+
+
 
     <script>
-    var sliderControl = null;
+	var sliderControl = null;
 
-
-var myIcon = L.icon({
-    iconUrl: 'leaflet/images/bomb.png',
-    iconSize: [38, 38],
-    iconAnchor: [22, 94],
-    popupAnchor: [-3, -76],
-    shadowUrl: 'leaflet/images/marker-shadow.png',
-    shadowSize: [38, 65],
-    shadowAnchor: [8, 130]
-});
-	
-
-	var points1992 = [	
-				{
-					type: 'Feature',
-					geometry: {
-						type: 'Point',
-						coordinates: [-73.8716, 40.7115]
-					},
-					properties: {
-						date: 'September 9, 1992',
-						description: 'The Lesbian Avengers marched down Metropolitan Avenue, led by a 4 woman brass band, with a banner that said "Teach about Lesbian Lives." They handed out lavendar balloons to families that said "Ask about Lesbian Lives." They handed out fact sheets and balloons at the entrance of the school. Around 60 lesbians participated.',
-						icon: myIcon
-					}
-				},
-				{
-					type: 'Feature',
-					geometry: {
-						type: 'Point',
-						coordinates: [-73.949997, 40.650002]
-					},
-					properties: {
-						date: 'October 6, 1992',
-						description: 'Avengers gathered to counter-protest when the chair of community board 24 (Mary Cummins) had bussed in parents to do a protest about the Rainbow Curriculum. According to Maxine Wolfe, "We marched down the street in front of the Board of Ed, with the brass band in front, folled by a replica of our bomb corried by four women, surrounded by flags. The bomb and flags said "Lighten Up. Teach about Lesbians."',
-						icon: myIcon
-					}
-				}
-			]
-	
-			var points1993 = [
-				{
-					type: 'Feature',
-					geometry: {
-						type: 'Point',
-						coordinates: [-74.0134, 40.7127]
-					},
-					properties: {
-						date: 'January ?, 1993',
-						description: 'Small group went to Self Magazine offices to protest them having a conference in Colorado. They cancelled the conference.',
-						icon: myIcon
-					}
-				},
-				{
-					type: 'Feature',
-					geometry: {
-						type: 'Point',
-						coordinates: [-73.9855, 40.7580]
-					},
-					properties: {
-						date: 'February 13, 1993',
-						description: 'Stink bombs at recruitment center in Times Square to protest Dont Ask Dont Tell',
-						icon: myIcon
-					}
-				}			
-			
-			]
-
-var map = L.map('avengersmap').setView([40.7503941,-73.9698951], 11);
+	// Create geoJSON dataset (if linking mulitple markers together to appear/hide at once, all those linked go into one dataset)
+	var dataset1 = [	
+	    {
+		type: 'Feature',
+		geometry: {
+		    type: 'Point',
+		    coordinates: [-73.8, 40.7]
+		},
+		properties: {
+		    title: 'Popup 1',
+		    description: 'Hello World!',
+		    time: '1992/01'
+		}
+	    },
+	    {
+		type: 'Feature',
+		geometry: {
+		    type: 'Point',
+		    coordinates: [-73.9, 40.6]
+		},
+		properties: {
+		    title: 'Popup 2',
+		    description: 'Hello again, World!',
+		    time: '1992/06'
+		}
+	    }
+	]
+	/*
+	// Create second dataset of linked markers
+	var points1993 = [
+	    {
+		type: 'Feature',
+		geometry: {
+		    type: 'Point',
+		    coordinates: [-74.0, 40.8]
+		},
+		properties: {
+		    title: 'Popup 3',
+		    description: 'Hello World, once more!',
+		    time: '1993/05'
+		}
+	    },
+	    {
+		type: 'Feature',
+		geometry: {
+		    type: 'Point',
+		    coordinates: [-73.9, 40.8]
+		},
+		properties: {
+		    title: 'Popup 4',
+		    description: 'Last time: Hello World!',
+		    time: '1993/08'
+		}
+	    }			
+	]
+	*/
+	// Create map inside div with #myMap ID; set view 
+	var map1 = L.map('myMap').setView([40.7,-73.9], 12);
 	 
-var basemap = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
-    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-    maxZoom: 18,
-    id: 'dixonel7/ck62hgzo80re41io1vknlcgyg',
-    accessToken: 'pk.eyJ1IjoiZGl4b25lbDciLCJhIjoiY2o4enpya2dvMnRlYzJxcDZjcWRwenZ1cSJ9.NqNl--HPrC6QXcClHCswfA'
-}).addTo(map);
+	// Add tileLayer to map
+	var basemap = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    	    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+	}).addTo(map1);
 
-var y1992 = L.layerGroup().addTo(map);
-var y1993 = L.layerGroup().addTo(map);
-
-function add1992 (feature, layer) {
-  y1992.addLayer(layer)
-  var content = "<div style='clear: both'></div><div><strong>" + feature.properties.date + "</strong><br>" + feature.properties.description + "</div>";
-  layer.setIcon(feature.properties.icon);
-  layer.bindPopup(content, {closeButton: true});
-				// some other code can go here, like adding a popup with layer.bindPopup("Hello")
-};
-
-function add1993 (feature, layer) {
-  y1993.addLayer(layer);
-  var content = "<div style='clear: both'></div><div><strong>" + feature.properties.date + "</strong><br>" + feature.properties.description + "</div>";
-  layer.setIcon(feature.properties.icon);
-  layer.bindPopup(content, {closeButton: true});
-				// some other code can go here, like adding a popup with layer.bindPopup("Hello")
-};
-
-// create an options object that specifies which function to call on each feature
-var layer1992 = {
-  onEachFeature: add1992,
-  time: '1992'
-};
-var layer1993 = {
-  onEachFeature: add1993,
-  time: '1993'
-}
-
-// create the GeoJSON layer from myLayerData
-var full1992 = L.geoJSON(points1992, layer1992);
-var full1993 = L.geoJSON(points1993, layer1993);
-
-layerGroup = L.layerGroup([full1992, full1993 ]);
-	    
-var sliderControl = L.control.sliderControl( {
-	layer:layerGroup,
-	alwaysShowDate: true,
-	showAllOnStart: true
-});
-map.addControl(sliderControl);
-sliderControl.startSlider();
+	//Create an empty layerGroup and add it to the map
+	var group1 = L.layerGroup().addTo(map1);
+	/*
+	// If creating groups of linked markers, create an empty layerGroup for each set
+	var group2 = L.layerGroup().addTo(map);
+	*/
+	
+	// Specify function that will load markers, set icons, bind popups with geoJSON content into the specified layer
+	function addToGroup1 (feature, layer) {
+  	    group1.addLayer(layer);
+  	    var content = "<div style='clear: both'></div><div><strong>" + feature.properties.date + "</strong><br>" + feature.properties.description + "</div>";
+	    /*layer.setIcon( // use this if defining custom icons in geoJSON
+		feature.properties.icon
+		// or define icon settings here
+		); */
+	    layer.bindPopup(content, {closeButton: true});
+	};
+	/* 
+	// If creating multiple groups to be controlled, repeat code for other groups, until all are covered
+	function addToGroup2 (feature, layer) {
+  	    group2.addLayer(layer);
+  	    var content = "<div style='clear: both'></div><div><strong>" + feature.properties.date + "</strong><br>" + feature.properties.description + "</div>";
+	    /*layer.setIcon(
+		feature.properties.icon // use this if defining custom icons in geoJSON
+		// or define icon settings here
+		); *//*
+	    layer.bindPopup(content, {closeButton: true});
+	};
+	*/
+	// Create an options object that uses the functions above for each marker in the group
+	var optionsObject1 = {
+  	    // If creating groups to be controlled simultaneously, specify an overarching time for all of the items in this group
+	    //time: '1992',
+	    onEachFeature: addToGroup1
+	};
+	/*
+	// If creating multiple groups, repeat above for each group
+	var optionsObject2 = {
+  	    // Specify an overarching time for all of the items in this group
+	    //time: '1993',
+	    onEachFeature: addToGroup2
+	}
+	*/
+	// For single group, load dataset, popups, etc. into that group
+	group1.geoJSON(dataset1, addToGroup1);
+	/*
+	// For multiple groups, remove function above and instead create new variables for each group, using their dataset and function 
+	var fullGroup1 = L.geoJSON(dataset1, addToGroup1);
+	var fullGroup2 = L.geoJSON(dataset2, addToGroup2);
+	// For multiple groups, create final layerGroup to hold all of these geoJSON variables in an array
+	var multipleLayerGroups = L.layerGroup([ fullgroup1, fullGroup2 ]);
+	*/
+	// Create Slider
+	var sliderControl = L.control.sliderControl( {
+	    // Set layer below to either the single group for the single set, or the final layerGroup containing the array
+	    layer:layerGroup,
+	    alwaysShowDate: true,
+	    showAllOnStart: true
+	});
+	// Add the slider to the map
+	map1.addControl(sliderControl);
+	// Initialize the slider
+	sliderControl.startSlider();
 
     </script>
 </body>
