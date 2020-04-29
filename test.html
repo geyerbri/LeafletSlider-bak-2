@@ -104,8 +104,8 @@ var basemap = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{
     accessToken: 'pk.eyJ1IjoiZGl4b25lbDciLCJhIjoiY2o4enpya2dvMnRlYzJxcDZjcWRwenZ1cSJ9.NqNl--HPrC6QXcClHCswfA'
 }).addTo(map);
 
-var y1992 = L.geoJSON().addTo(map);
-var y1993 = L.geoJSON().addTo(map);
+var y1992 = L.layerGroup().addTo(map);
+var y1993 = L.layerGroup().addTo(map);
 
 function add1992 (feature, layer) {
   y1992.addLayer(layer)
@@ -133,11 +133,11 @@ var layer1993 = {
   time: '1993'
 }
 
-// Populate layerGroups with geoJSON and datasets
-y1992.addData(points1992, layer1992);
-y1993.addData(points1993, layer1993);
+// create the GeoJSON layer from myLayerData
+var full1992 = L.geoJSON(points1992, layer1992);
+var full1993 = L.geoJSON(points1993, layer1993);
 
-layerGroup = L.layerGroup([ y1992, y1993 ]);
+layerGroup = L.layerGroup([full1992, full1993 ]);
 	    
 var sliderControl = L.control.sliderControl( {
 	layer:layerGroup,
