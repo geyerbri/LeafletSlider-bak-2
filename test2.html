@@ -120,7 +120,7 @@
 		feature.properties.icon
 		// or define icon settings here
 		); */
-	    Object.defineProperty(layer, 'date', {feature.properties.date});
+	    Object.defineProperty(layer, 'date', feature.properties.date);
 	    layer.bindPopup(content, {closeButton: true});
 	};
 	/* 
