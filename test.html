@@ -37,9 +37,9 @@
 
     //Use usual LayerGroups instead of GeoJSON fetched markers
    
-var marker1 = L.marker([51.5, -0.09], {time: "2013-01-22 08:42:26+01"});
-var marker2 = L.marker([51.6, -0.09], {time: "2013-01-22 10:00:26+01"});
-var marker3 = L.marker([51.7, -0.09], {time: "2013-01-22 10:03:29+01"});
+var marker1 = L.marker([51.5, -0.09]);
+var marker2 = L.marker([51.6, -0.09]);
+var marker3 = L.marker([51.7, -0.09]);
 
 var pointA = new L.LatLng(51.8, -0.09);
 var pointB = new L.LatLng(51.9, -0.2);
@@ -53,7 +53,7 @@ var polyline = new L.Polyline(pointList, {
     smoothFactor: 1
 });
 
-var layerGroup1 = L.layerGroup([marker1, marker2, marker3 ] {'time': '2013-01-22 08:42:26+01'});
+var layerGroup1 = L.layerGroup([marker1, marker2, marker3 ], {time: '2013-01-22 08:42:26+01'});
 
 layerGroup = L.layerGroup([layerGroup1, polyline ]);
 	    
