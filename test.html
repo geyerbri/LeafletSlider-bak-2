@@ -133,11 +133,11 @@ var layer1993 = {
   time: '1993'
 }
 
-// create the GeoJSON layer from myLayerData
-var full1992 = L.geoJSON(points1992, layer1992);
-var full1993 = L.geoJSON(points1993, layer1993);
+// Populate layerGroups with geoJSON and datasets
+y1992.geoJSON(points1992, layer1992);
+y1993.geoJSON(points1993, layer1993);
 
-layerGroup = L.layerGroup([full1992, full1993 ]);
+layerGroup = L.layerGroup([ y1992, y1993 ]);
 	    
 var sliderControl = L.control.sliderControl( {
 	layer:layerGroup,
