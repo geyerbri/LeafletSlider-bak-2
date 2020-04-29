@@ -36,7 +36,7 @@
 
 
     //Use usual LayerGroups instead of GeoJSON fetched markers
-    /*
+   
     var marker1 = L.marker([51.933292258, 7.582512743], {time: "2013-01-22 08:42:26+01"});
     var marker2 = L.marker([51.9, 7.6], {time: "2013-01-22 10:00:26+01"});
     var marker3 = L.marker([51.7, 7.7], {time: "2013-01-22 10:03:29+01"});
@@ -58,9 +58,9 @@
     var sliderControl = L.control.sliderControl({layer:layerGroup, follow: true});
     myMap.addControl(sliderControl);
     sliderControl.startSlider();
-  */
 
 
+/*
     //Fetch some data from a GeoJSON file
     $.getJSON("examples/points.json", function(json) {
         var testlayer = L.geoJson(json),
@@ -83,7 +83,7 @@
         sliderControl.on('rangechanged',function (e) {
             console.log(e.markers)
         });
-*/
+
 
         //Make sure to add the slider to the map ;-)
         myMap.addControl(sliderControl);
@@ -99,6 +99,7 @@ function onEachFeature(testLayer, layer) {
 		}
     };  
 testLayer.addData(geoJSON);
+*/
     });
     </script>
 </body>
