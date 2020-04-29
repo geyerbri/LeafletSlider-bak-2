@@ -148,9 +148,9 @@
 	    onEachFeature: addToGroup2
 	}
 	*/
-	// For single group, load dataset, popups, etc. into a geoJSON layer
+	// For single group, load dataset, popups, etc. into a geoJSON layer, then create a final layerGroup from it
 	var fullGroup1 = L.geoJSON(dataset1, addToGroup1);
-	group1.addData(fullGroup1);
+	var finalSingleGroup = L.layerGroup(fullGroup1);
 	/*
 	// For multiple groups, remove function above and instead create new variables for each group, using their dataset and function 
 	var fullGroup1 = L.geoJSON(dataset1, addToGroup1);
@@ -161,7 +161,7 @@
 	// Create Slider
 	var sliderControl = L.control.sliderControl( {
 	    // Set layer below to EITHER the first layerGroup, from the be beginning, OR the final layerGroup containing the array
-	    layer: group1,
+	    layer: finalSingleGroup,
 	    alwaysShowDate: true,
 	    showAllOnStart: true
 	});
