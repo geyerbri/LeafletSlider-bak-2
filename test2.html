@@ -98,7 +98,7 @@
 	]
 	*/
 	// Create map inside div with #myMap ID; set view 
-	var map1 = L.map('myMap').setView([40.7,-73.9], 12);
+	var map1 = L.map('myMap').setView([40.7,-73.9], 11);
 	 
 	// Add tileLayer to map
 	var basemap = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -149,7 +149,7 @@
 	}
 	*/
 	// For single group, load dataset, popups, etc. into a geoJSON layer
-	L.geoJSON(dataset1, addToGroup1).addTo(map1);
+	var fullGroup1 = L.geoJSON(dataset1, addToGroup1);
 	/*
 	// For multiple groups, remove function above and instead create new variables for each group, using their dataset and function 
 	var fullGroup1 = L.geoJSON(dataset1, addToGroup1);
