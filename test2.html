@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Leaflet Time Slider Example</title>
+    <meta charset="utf-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.6.0/leaflet.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.min.css" type="text/css">
+</head>
+
+<body>
+    <div id="avengersmap" style="width: 100%; height: 600px"></div>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.6.0/leaflet.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
+    <!-- Include this library for mobile touch support  -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
+
+
+    <script src="src/SliderControl.js"></script>
+
+    <script>
+    var sliderControl = null;
+
+
+var myIcon = L.icon({
+    iconUrl: 'leaflet/images/bomb.png',
+    iconSize: [38, 38],
+    iconAnchor: [22, 94],
+    popupAnchor: [-3, -76],
+    shadowUrl: 'leaflet/images/marker-shadow.png',
+    shadowSize: [38, 65],
+    shadowAnchor: [8, 130]
+});
+	
+
+	var points1992 = [	
+				{
+					type: 'Feature',
+					geometry: {
+						type: 'Point',
+						coordinates: [-73.8716, 40.7115]
+					},
+					properties: {
+						date: 'September 9, 1992',
+						description: 'The Lesbian Avengers marched down Metropolitan Avenue, led by a 4 woman brass band, with a banner that said "Teach about Lesbian Lives." They handed out lavendar balloons to families that said "Ask about Lesbian Lives." They handed out fact sheets and balloons at the entrance of the school. Around 60 lesbians participated.',
+						icon: myIcon
+					}
+				},
+				{
+					type: 'Feature',
+					geometry: {
+						type: 'Point',
+						coordinates: [-73.949997, 40.650002]
+					},
+					properties: {
+						date: 'October 6, 1992',
+						description: 'Avengers gathered to counter-protest when the chair of community board 24 (Mary Cummins) had bussed in parents to do a protest about the Rainbow Curriculum. According to Maxine Wolfe, "We marched down the street in front of the Board of Ed, with the brass band in front, folled by a replica of our bomb corried by four women, surrounded by flags. The bomb and flags said "Lighten Up. Teach about Lesbians."',
+						icon: myIcon
+					}
+				}
+			]
+	
+			var points1993 = [
+				{
+					type: 'Feature',
+					geometry: {
+						type: 'Point',
+						coordinates: [-74.0134, 40.7127]
+					},
+					properties: {
+						date: 'January ?, 1993',
+						description: 'Small group went to Self Magazine offices to protest them having a conference in Colorado. They cancelled the conference.',
+						icon: myIcon
+					}
+				},
+				{
+					type: 'Feature',
+					geometry: {
+						type: 'Point',
+						coordinates: [-73.9855, 40.7580]
+					},
+					properties: {
+						date: 'February 13, 1993',
+						description: 'Stink bombs at recruitment center in Times Square to protest Dont Ask Dont Tell',
+						icon: myIcon
+					}
+				}			
+			
+			]
+
+var map = L.map('avengersmap').setView([40.7503941,-73.9698951], 11);
+	 
+var basemap = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+    maxZoom: 18,
+    id: 'dixonel7/ck62hgzo80re41io1vknlcgyg',
+    accessToken: 'pk.eyJ1IjoiZGl4b25lbDciLCJhIjoiY2o4enpya2dvMnRlYzJxcDZjcWRwenZ1cSJ9.NqNl--HPrC6QXcClHCswfA'
+}).addTo(map);
+
+var y1992 = L.layerGroup().addTo(map);
+var y1993 = L.layerGroup().addTo(map);
+
+function add1992 (feature, layer) {
+  y1992.addLayer(layer)
+  var content = "<div style='clear: both'></div><div><strong>" + feature.properties.date + "</strong><br>" + feature.properties.description + "</div>";
+  layer.setIcon(feature.properties.icon);
+  layer.bindPopup(content, {closeButton: true});
+				// some other code can go here, like adding a popup with layer.bindPopup("Hello")
+};
+
+function add1993 (feature, layer) {
+  y1993.addLayer(layer);
+  var content = "<div style='clear: both'></div><div><strong>" + feature.properties.date + "</strong><br>" + feature.properties.description + "</div>";
+  layer.setIcon(feature.properties.icon);
+  layer.bindPopup(content, {closeButton: true});
+				// some other code can go here, like adding a popup with layer.bindPopup("Hello")
+};
+
+// create an options object that specifies which function to call on each feature
+var layer1992 = {
+  onEachFeature: add1992,
+  time: '1992'
+};
+var layer1993 = {
+  onEachFeature: add1993,
+  time: '1993'
+}
+
+// create the GeoJSON layer from myLayerData
+var full1992 = L.geoJSON(points1992, layer1992);
+var full1993 = L.geoJSON(points1993, layer1993);
+
+layerGroup = L.layerGroup([full1992, full1993 ]);
+	    
+var sliderControl = L.control.sliderControl( {
+	layer:layerGroup,
+	alwaysShowDate: true,
+	showAllOnStart: true
+});
+map.addControl(sliderControl);
+sliderControl.startSlider();
+
+    </script>
+</body>
+
+</html>
