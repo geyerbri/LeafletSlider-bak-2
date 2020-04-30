@@ -160,15 +160,16 @@
 	// Create an options object that uses the functions above for each marker in the group
 	var optionsObject1 = {
   	    // If creating multiple groups, specify an overarching time for all of the items in this group
-	    time: '1992',
-	    onEachFeature: addToGroup1
+	    onEachFeature: addToGroup1,
+	    time: '1992'
+	    
 	};
 	
 	// If creating multiple groups, repeat above for each group
 	var optionsObject2 = {
   	    // Specify an overarching time for all of the items in this group
-	    time: '1993',
-	    onEachFeature: addToGroup2
+	    onEachFeature: addToGroup2,
+	    time: '1993'
 	}
 	
 	// For single group, load dataset, popups, etc. into geoJSON layer
