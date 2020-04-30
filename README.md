@@ -12,7 +12,7 @@ With two silders [Epoch.html](https://falke-design.github.io/LeafletSlider/examp
 LeafletSlider with Markers
 -----
 
-For a fully-commented explainer of how to use this slider with popups, see [the geyerbri/LeafletSlider index.html file](https://github.com/geyerbri/LeafletSlider/blob/master/index.html)!
+For a fully-commented explainer of how to use this slider with popups, see [the geyerbri/LeafletSlider index.html file](https://github.com/geyerbri/LeafletSlider/blob/master/index.html).
 
 Usage
 -----
