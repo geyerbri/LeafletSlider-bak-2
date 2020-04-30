@@ -114,7 +114,7 @@
 	// Specify function that will load markers, set icons, bind popups with geoJSON content into the specified layer
 	function addToGroup1 (feature, layer) {
   	    group1.addLayer(layer);
-  	    var content = "<div style='clear: both'></div><div><strong>" + feature.properties.date + "</strong><br>" + feature.properties.description + "</div>";
+  	    var content = "<div style='clear: both'></div><div><h2>" + feature.properties.title + "</h2><p>" + feature.properties.description + "</p></div>";
 	    /*layer.setIcon( // use this if defining custom icons in geoJSON
 		feature.properties.icon
 		// or define icon settings here
@@ -125,7 +125,7 @@
 	// If creating multiple groups to be controlled, repeat code for other groups, until all are covered
 	function addToGroup2 (feature, layer) {
   	    group2.addLayer(layer);
-  	    var content = "<div style='clear: both'></div><div><strong>" + feature.properties.date + "</strong><br>" + feature.properties.description + "</div>";
+  	    var content = "<div style='clear: both'></div><div><h2>" + feature.properties.title + "</h2><p>" + feature.properties.description + "</p></div>";
 	    /*layer.setIcon(
 		feature.properties.icon // use this if defining custom icons in geoJSON
 		// or define icon settings here
