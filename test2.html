@@ -103,11 +103,12 @@
     	    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
 	}).addTo(map1);
 
-	//Create an empty layerGroup and add it to the map
-	var group1 = L.layerGroup();
+	//Create an empty geoJSON layer
+	var group1 = L.geoJSON();
 	/*
 	// If creating groups of linked markers, create an empty layerGroup for each set
-	var group2 = L.layerGroup().addTo(map1);
+	var group1 = L.layerGroup();
+	var group2 = L.layerGroup();
 	*/
 	
 	// Specify function that will load markers, set icons, bind popups with geoJSON content into the specified layer
@@ -146,7 +147,7 @@
 	    onEachFeature: addToGroup2
 	}
 	*/
-	// For single group, load dataset, popups, etc. into a geoJSON layer
+	// For single group, load dataset, popups, etc. into geoJSON layer
 	L.geoJSON(dataset1, addToGroup1);
 	/*
 	// For multiple groups, remove function above and instead create new variables for each group, using their dataset and function 
