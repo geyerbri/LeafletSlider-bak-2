@@ -9,6 +9,8 @@ LeafletSlider with Markers
 
 For a fully-commented explainer of how to use this slider with popups, see [the geyerbri/LeafletSlider index.html file](https://github.com/geyerbri/LeafletSlider/blob/master/index.html).
 
+See the commented file in action, with its basic settings: https://geyerbri.github.io/LeafletSlider/
+
 Falke-Design
 -----
 Check out the Falke-Design [Demo](https://falke-design.github.io/LeafletSlider/)!
