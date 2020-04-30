@@ -212,29 +212,27 @@
 
 	// Create an options object that uses the functions above for each marker in the group
 	var optionsExternalJSON = {
-  	    // If creating multiple groups, specify an overarching time for all of the items in this group
-	    //time: '1992',
 	    onEachFeature: addToExternalJSON
 	};
 
 	// Load JSON via $.getJSON
 	$.getJSON("examples/points.json", function(json) {
 	    L.geoJSON(json, optionsExternalJSON);
+	
+	    // Create Slider    
+	    var externalSlider = L.control.sliderControl( {
+		// Set layer below to the first geoJSON
+		layer: externalJSON,
+		alwaysShowDate: true,
+	    });
+	
+	    // Add the slider to the map
+	    map1.addControl(externalSlider);
+	
+	    // Initialize the slider
+	    externalSlider.startSlider();
 	});
-	
-	// Create Slider    
-	var externalSlider = L.control.sliderControl( {
-	    // Set layer below to the first geoJSON
-	    layer: externalJSON,
-	    alwaysShowDate: true,
-	});
-	
-	// Add the slider to the map
-	map1.addControl(externalSlider);
-	
-	// Initialize the slider
-	externalSlider.startSlider();
-	
+
     </script>
 </body>
 
