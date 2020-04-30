@@ -26,7 +26,7 @@
 	    width: 80%; 
 	    height: 600px;
 	    postion: relative;
-	    margins: auto;
+	    margin: auto;
 	}
 	</style>
 </head>
@@ -39,8 +39,6 @@
 
 
     <script>
-	var sliderControl = null;
-
 	// Create geoJSON dataset (if linking mulitple markers together to appear/hide at once, all those linked go into one dataset)
 	var dataset1 = [	
 	    {
@@ -70,7 +68,7 @@
 	]
 
 	// Create second dataset of linked markers
-	var points1993 = [
+	var dataset2 = [
 	    {
 		type: 'Feature',
 		geometry: {
@@ -109,7 +107,7 @@
 	var group1 = L.layerGroup().addTo(map1);
 	/*
 	// If creating groups of linked markers, create an empty layerGroup for each set
-	var group2 = L.layerGroup().addTo(map);
+	var group2 = L.layerGroup().addTo(map1);
 	*/
 	
 	// Specify function that will load markers, set icons, bind popups with geoJSON content into the specified layer
@@ -136,7 +134,7 @@
 	*/
 	// Create an options object that uses the functions above for each marker in the group
 	var optionsObject1 = {
-  	    // If creating groups to be controlled simultaneously, specify an overarching time for all of the items in this group
+  	    // If creating multiple groups, specify an overarching time for all of the items in this group
 	    //time: '1992',
 	    onEachFeature: addToGroup1
 	};
@@ -148,12 +146,13 @@
 	    onEachFeature: addToGroup2
 	}
 	*/
-	// For single group, load dataset, popups, etc. into a geoJSON layer, then create a final layerGroup from it
+	// For single group, load dataset, popups, etc. into a geoJSON layer
 	L.geoJSON(dataset1, addToGroup1);
 	/*
 	// For multiple groups, remove function above and instead create new variables for each group, using their dataset and function 
 	var fullGroup1 = L.geoJSON(dataset1, addToGroup1);
 	var fullGroup2 = L.geoJSON(dataset2, addToGroup2);
+	
 	// For multiple groups, create final layerGroup to hold all of these geoJSON variables in an array
 	var multipleLayerGroups = L.layerGroup([ fullgroup1, fullGroup2 ]);
 	*/
@@ -164,8 +163,10 @@
 	    alwaysShowDate: true,
 	    showAllOnStart: true
 	});
+	
 	// Add the slider to the map
 	map1.addControl(sliderControl);
+	
 	// Initialize the slider
 	sliderControl.startSlider();
 
