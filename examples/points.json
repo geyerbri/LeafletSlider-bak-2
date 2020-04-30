@@ -35,7 +35,8 @@
 		    "title": "Popup 3",
 		    "description": "Hello once again, World!",
 		    "time": "1992/07"
-		},
+		}
+	    },
 	    {
 		"type": "Feature",
 		"geometry": {
