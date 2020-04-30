@@ -4,15 +4,16 @@ LeafletSlider
 The [Leaflet](http://leafletjs.com/) Time-Slider enables you to dynamically add and remove Markers on a map by using a [JQuery UI slider
 ](http://jqueryui.com/slider/).
 
-
-Check out the Falke-Design [Demo](https://falke-design.github.io/LeafletSlider/)!
-
-With two silders [Epoch.html](https://falke-design.github.io/LeafletSlider/examples/epoch.html)!
-
 LeafletSlider with Markers
 -----
 
 For a fully-commented explainer of how to use this slider with popups, see [the geyerbri/LeafletSlider index.html file](https://github.com/geyerbri/LeafletSlider/blob/master/index.html).
+
+Falke-Design
+-----
+Check out the Falke-Design [Demo](https://falke-design.github.io/LeafletSlider/)!
+
+With two silders [Epoch.html](https://falke-design.github.io/LeafletSlider/examples/epoch.html)!
 
 Usage
 -----
@@ -22,9 +23,6 @@ Add:
 * [JQueryUI](https://cdnjs.com/libraries/jqueryui)
 
 to your normal Leaflet map. Make sure to add both JS and CSS for JQuery and JQueryUI.
-
-
-
 
 To enable the Slider you have to pass in a layer to the SliderControl, add the Slider.
 The Control has to be initialized by using the method startSlider(); on the control.
@@ -131,3 +129,5 @@ Author
 Dennis Wilhelm, 2013
 
 Updated by @Falke-Design 2020
+
+Commented index.html by @geyerbri 2020
