@@ -9,11 +9,6 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.6.0/leaflet.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.min.css" type="text/css">
-</head>
-
-<body>
-    <div id="map" style="width: 100%; height: 600px"></div>
-
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.6.0/leaflet.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js"></script>
@@ -22,123 +17,181 @@
     <!-- Include this library for mobile touch support  -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
 
-
+    <!-- Include SliderControl.js script -->
     <script src="src/SliderControl.js"></script>
+	
+    <!-- Style map -->
+    <style>
+	#myMap {
+	    width: 80%; 
+	    height: 600px;
+	    postion: relative;
+	    margin: auto;
+	}
+	</style>
+</head>
+
+<body>
+    
+    <!-- Add div to contain #myMap -->
+    <div id="myMap"></div>
+
+
 
     <script>
-//    var sliderControl = null;
-
-    var points = [
-        {
-            type: 'Feature',
-            properties: {
-                time: '1995/11/11',
-//                icon: myIcon,
-                popup: '<b>November 11, 1995</b><br> Action at the East Side Marriott against the Christian Coalition which was having a School Board Training. Rode up to Hotel in Yellow school bus; dressed in pleated skirts and and with I was a Lesbian Child T-shirts; a group marched in and sang a song as they marched thru the halls and out again to join others for picket for an hour. Gave out leaflets and pencils (Erase the Christian Right).'
-            }, 
-            geometry: {        
-                type: 'Point',
-                coordinates: [7.582512743, 51.933292258]
-            }
-        },
-        {
-            type: 'Feature',
-            properties: {
-                time: '1992/10/06',
-  //              icon: myIcon, 
-                popup: '<b>October 6, 1992</b><br> Avengers gathered to counter-protest when the chair of community board 24 (Mary Cummins) had bussed in parents to do a protest about the Rainbow Curriculum. According to Maxine Wolfe, We marched down the street in front of the Board of Ed, with the brass band in front, folled by a replica of our bomb corried by four women, surrounded by flags. The bomb and flags said Lighten Up. Teach about Lesbians.' 
-            }, 
-            geometry: {       
-                type: 'Point',
-                coordinates: [7.602516645, 51.94962073]
-            }
-        },
-        {
-            type: 'Feature',
-            properties: {
-                time: '1992/10/29',
-//                icon: myIcon, 
-                popup: '<b>October 29, 1992</b><br>Held a press conference about the murders of Hattie Mae Cohens and Brian Mock, and no on 9.' 
-            }, 
-            geometry: {
-                type: 'Point',
-                coordinates: [7.61132039, 51.967614681]
-            }
-        }
-    ]
-	    
-    var myMap = L.map('map').setView([51.95, 7.6], 12);
-
-    L.tileLayer('https://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="https://osm.org/copyright">OpenStreetMap</a> contributors'
-    }).addTo(myMap);
-
-
-    //Use usual LayerGroups instead of GeoJSON fetched markers
-/*   
-var marker1 = L.marker([51.5, -0.09], {time: "2013-01-22 08:42:26+01"});
-var marker2 = L.marker([51.6, -0.09], {time: "2013-01-22 10:00:26+01"});
-var marker3 = L.marker([51.7, -0.09], {time: "2013-01-22 10:03:29+01"});
-
-var pointA = new L.LatLng(51.8, -0.09);
-var pointB = new L.LatLng(51.9, -0.2);
-var pointList = [pointA, pointB];
-
-var polyline = new L.Polyline(pointList, {
-    time: "2013-01-22 10:24:59+01",
-    color: 'red',
-    weight: 3,
-    opacity: 1,
-    smoothFactor: 1
-});
-
-
-layerGroup = L.layerGroup([marker1, marker2, marker3, polyline ]);
-var sliderControl = L.control.sliderControl({layer:layerGroup});
-myMap.addControl(sliderControl);
-sliderControl.startSlider();
-
-*/
-    //Fetch some data from a GeoJSON file
-//    $.getJSON("examples/points.json", function(json) {
-        var testlayer = L.geoJSON(points),
-            sliderControl = L.control.sliderControl({
-                position: "topright",
-                layer: testlayer,
-	        alwaysShowDate: true,
-		timeStrLength: 4
-            });
-
-        //For a Range-Slider use the range property:
-/*        sliderControl = L.control.sliderControl({
-            position: "topright",
-            layer: testlayer,
-            alwaysShowDate: true,
-	    timeStrLength: 4
-        });
-
-
-        sliderControl.on('rangechanged',function (e) {
-            console.log(e.markers)
-        });
-
-
-*/        //Make sure to add the slider to the map ;-)
-        myMap.addControl(sliderControl);
-        //And initialize the slider
-        sliderControl.startSlider();
-/*function onEachFeature(testLayer, layer) { 
-        if (testLayer.time && testLayer.popup) { 
-            testLayer.on('layeradd', function(e) { 
-				testLayer.setIcon(L.icon(testLayer.myIcon));
-				var content = testLayer.popup;
-				testLayer.bindPopup(content, {minWidth: 400, autoPanPadding: [10,80], closeButton: true});
-			});
+	// Create geoJSON dataset (if linking mulitple markers together to appear/hide at once, all those linked go into one dataset)
+	var dataset1 = [	
+	    {
+		type: 'Feature',
+		geometry: {
+		    type: 'Point',
+		    coordinates: [-73.8, 40.7]
+		},
+		properties: {
+		    title: 'Popup 1',
+		    description: 'Hello World!',
+		    time: '1992/01'
 		}
-    };  
-testLayer.addData(geoJSON);
-*/
-//    });
+	    },
+	    {
+		type: 'Feature',
+		geometry: {
+		    type: 'Point',
+		    coordinates: [-73.9, 40.6]
+		},
+		properties: {
+		    title: 'Popup 2',
+		    description: 'Hello again, World!',
+		    time: '1992/06'
+		}
+	    },
+	    {
+		type: 'Feature',
+		geometry: {
+		    type: 'Point',
+		    coordinates: [-73.95, 40.6]
+		},
+		properties: {
+		    title: 'Popup 3',
+		    description: 'Hello once again, World!',
+		    time: '1992/07'
+		}
+	    }
+	]
+
+	// If desired, create additional datasets of linked markers
+	var dataset2 = [
+	    {
+		type: 'Feature',
+		geometry: {
+		    type: 'Point',
+		    coordinates: [-74.0, 40.8]
+		},
+		properties: {
+		    title: 'Popup 4',
+		    description: 'Hello World, once more!',
+		    time: '1993/05'
+		}
+	    },
+	    {
+		type: 'Feature',
+		geometry: {
+		    type: 'Point',
+		    coordinates: [-73.9, 40.8]
+		},
+		properties: {
+		    title: 'Popup 5',
+		    description: 'Hello World, tired yet?!',
+		    time: '1993/08'
+		}
+	    },
+	    {
+		type: 'Feature',
+		geometry: {
+		    type: 'Point',
+		    coordinates: [-73.9, 40.7]
+		},
+		properties: {
+		    title: 'Popup 6',
+		    description: 'Last time: Hello World!',
+		    time: '1993/06'
+		}
+	    }
+	]
+
+	// Create map inside div with #myMap ID; set view 
+	var map1 = L.map('myMap').setView([40.7,-73.9], 11);
+	 
+	// Add tileLayer to map
+	L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    	    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+	}).addTo(map1);
+
+	//Create an empty geoJSON layer
+	var group1 = L.geoJSON();
+	/*
+	// If creating groups of linked markers, remove geoJSON layer above and create an empty layerGroup for each set, below
+	var group1 = L.layerGroup();
+	var group2 = L.layerGroup();
+	*/
+	// Specify function that will load markers, set icons, bind popups with geoJSON content into the specified layer
+	function addToGroup1 (feature, layer) {
+  	    group1.addLayer(layer);
+  	    var content = "<div style='clear: both'></div><div><h4>" + feature.properties.title + "</h4><p>" + feature.properties.time + "</p><p>" + feature.properties.description + "</p></div>";
+	    /*layer.setIcon( // use this if defining custom icons in geoJSON
+		feature.properties.icon
+		// or define icon settings here
+		); */
+	    layer.bindPopup(content, {closeButton: true});
+	};
+	/*
+	// If creating multiple groups to be controlled, repeat code for other groups, until all are covered
+	function addToGroup2 (feature, layer) {
+  	    group2.addLayer(layer);
+  	    var content = "<div style='clear: both'></div><div><h4>" + feature.properties.title + "</h4><p>" + feature.properties.time + "</p><p>" + feature.properties.description + "</p></div>";
+	    /*layer.setIcon(
+		feature.properties.icon // use this if defining custom icons in geoJSON
+		// or define icon settings here
+		); *//*
+	    layer.bindPopup(content, {closeButton: true});
+	};
+	*/
+	// Create an options object that uses the functions above for each marker in the group
+	var optionsObject1 = {
+  	    // If creating multiple groups, specify an overarching time for all of the items in this group
+	    time: '1992',
+	    onEachFeature: addToGroup1
+	};
+	/*
+	// If creating multiple groups, repeat above for each group
+	var optionsObject2 = {
+  	    // Specify an overarching time for all of the items in this group
+	    time: '1993',
+	    onEachFeature: addToGroup2
+	}
+	*/
+	// For single group, load dataset, popups, etc. into geoJSON layer
+	L.geoJSON(dataset1, optionsObject1);
+	/*
+	// For multiple groups, remove function above and instead create new variables for each group, using their dataset and function 
+	var fullGroup1 = L.geoJSON(dataset1, optionsObject1);
+	var fullGroup2 = L.geoJSON(dataset2, optionsObject2);
+	
+	// For multiple groups, create final layerGroup to hold all of these geoJSON variables in an array
+	var multipleLayerGroups = L.layerGroup([ fullGroup1, fullGroup2 ]);
+	*/
+	// Create Slider
+	var sliderControl1 = L.control.sliderControl( {
+	    // Set layer below to EITHER the first layerGroup, from the be beginning, OR the final layerGroup containing the array
+	    layer: group1/*multipleLayerGroups*/,
+	    alwaysShowDate: true,
+	});
+	
+	// Add the slider to the map
+	map1.addControl(sliderControl1);
+	
+	// Initialize the slider
+	sliderControl1.startSlider();
 
     </script>
 </body>
