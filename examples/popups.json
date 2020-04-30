@@ -29,7 +29,7 @@
 		"type": "Feature",
 		"geometry": {
 		    "type": "Point",
-		    "coordinates": [-122.32, 47.58]
+		    "coordinates": [-122.32, 47.59]
 		},
 		"properties": {
 		    "title": "Popup 3",
@@ -53,7 +53,7 @@
 		"type": "Feature",
 		"geometry": {
 		    "type": "Point",
-		    "coordinates": [-122.33, 47.62]
+		    "coordinates": [-122.33, 47.61]
 		},
 		"properties": {
 		    "title": "Popup 5",
