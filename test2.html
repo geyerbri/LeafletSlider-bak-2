@@ -79,7 +79,7 @@
 	    }
 	]
 
-	// Create second dataset of linked markers
+	// If desired, create additional datasets of linked markers
 	var dataset2 = [
 	    {
 		type: 'Feature',
@@ -128,12 +128,12 @@
 	}).addTo(map1);
 
 	//Create an empty geoJSON layer
-	var group1 = L.geoJSON();
-	/*
-	// If creating groups of linked markers, create an empty layerGroup for each set
+//	var group1 = L.geoJSON();
+	
+	// If creating groups of linked markers, remove geoJSON layer above and create an empty layerGroup for each set, below
 	var group1 = L.layerGroup();
 	var group2 = L.layerGroup();
-	*/
+	
 	
 	// Specify function that will load markers, set icons, bind popups with geoJSON content into the specified layer
 	function addToGroup1 (feature, layer) {
@@ -145,7 +145,7 @@
 		); */
 	    layer.bindPopup(content, {closeButton: true});
 	};
-	/* 
+	 
 	// If creating multiple groups to be controlled, repeat code for other groups, until all are covered
 	function addToGroup2 (feature, layer) {
   	    group2.addLayer(layer);
@@ -153,38 +153,38 @@
 	    /*layer.setIcon(
 		feature.properties.icon // use this if defining custom icons in geoJSON
 		// or define icon settings here
-		); *//*
+		); */
 	    layer.bindPopup(content, {closeButton: true});
 	};
-	*/
+	
 	// Create an options object that uses the functions above for each marker in the group
 	var optionsObject1 = {
   	    // If creating multiple groups, specify an overarching time for all of the items in this group
-	    //time: '1992',
+	    time: '1992',
 	    onEachFeature: addToGroup1
 	};
-	/*
+	
 	// If creating multiple groups, repeat above for each group
 	var optionsObject2 = {
   	    // Specify an overarching time for all of the items in this group
-	    //time: '1993',
+	    time: '1993',
 	    onEachFeature: addToGroup2
 	}
-	*/
+	
 	// For single group, load dataset, popups, etc. into geoJSON layer
-	L.geoJSON(dataset1, optionsObject1);
-	/*
+//	L.geoJSON(dataset1, optionsObject1);
+	
 	// For multiple groups, remove function above and instead create new variables for each group, using their dataset and function 
 	var fullGroup1 = L.geoJSON(dataset1, addToGroup1);
 	var fullGroup2 = L.geoJSON(dataset2, addToGroup2);
 	
 	// For multiple groups, create final layerGroup to hold all of these geoJSON variables in an array
 	var multipleLayerGroups = L.layerGroup([ fullgroup1, fullGroup2 ]);
-	*/
+	
 	// Create Slider
 	var sliderControl = L.control.sliderControl( {
 	    // Set layer below to EITHER the first layerGroup, from the be beginning, OR the final layerGroup containing the array
-	    layer: group1,
+	    layer: /*group1*/multipleLayerGroups,
 	    alwaysShowDate: true,
 	});
 	
