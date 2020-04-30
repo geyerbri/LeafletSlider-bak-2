@@ -138,10 +138,12 @@
 	function addToGroup1 (feature, layer) {
   	    group1.addLayer(layer);
   	    var content = "<div style='clear: both'></div><div><h4>" + feature.properties.title + "</h4><p>" + feature.properties.time + "</p><p>" + feature.properties.description + "</p></div>";
-	    /*layer.setIcon( // use this if defining custom icons in geoJSON
-		feature.properties.icon
-		// or define icon settings here
-		); */
+	    // Use this section to create custom icons for this group of markers
+	//    layer.setIcon( 
+	//        // use this if defined custom icons in dataset
+ 	//	feature.properties.icon
+	//	// or define one set of icon settings for the entire group here
+	//	);
 	    layer.bindPopup(content, {closeButton: true});
 	};
 	/*
@@ -149,11 +151,12 @@
 	function addToGroup2 (feature, layer) {
   	    group2.addLayer(layer);
   	    var content = "<div style='clear: both'></div><div><h4>" + feature.properties.title + "</h4><p>" + feature.properties.time + "</p><p>" + feature.properties.description + "</p></div>";
-	    /*layer.setIcon(
-		feature.properties.icon // use this if defining custom icons in geoJSON
-		// or define icon settings here
-		); *//*
-	    layer.bindPopup(content, {closeButton: true});
+	    // Use this section to create custom icons for this group of markers
+	//    layer.setIcon( 
+	//        // use this if defined custom icons in dataset
+ 	//	feature.properties.icon
+	//	// or define one set of icon settings for the entire group here
+	//	);
 	};
 	*/
 	// Create an options object that uses the functions above for each marker in the group
@@ -182,8 +185,9 @@
 	*/
 	// Create Slider
 	var sliderControl1 = L.control.sliderControl( {
-	    // Set layer below to EITHER the first geoJSON, from the be beginning, OR the final layerGroup containing the array
-	    layer: group1/*multipleLayerGroups*/,
+	    // Set below to EITHER the first originally-empty geoJSON layer, OR the final layerGroup containing the array
+	//    layer: group1,
+	//    layer: multipleLayerGroups,
 	    alwaysShowDate: true,
 	});
 	
@@ -203,10 +207,12 @@
 	function addToExternalJSON (feature, layer) {
   	    externalJSON.addLayer(layer);
   	    var content = "<div style='clear: both'></div><div><h4>" + feature.properties.title + "</h4><p>" + feature.properties.time + "</p><p>" + feature.properties.description + "</p></div>";
-	    /*layer.setIcon( // use this if defining custom icons in geoJSON
-		feature.properties.icon
-		// or define icon settings here
-		); */
+	    // Use this section to create custom icons for this group of markers
+	//    layer.setIcon( 
+	//        // use this if defined custom icons in JSON file
+ 	//	feature.properties.icon
+	//	// or define one set of icon settings for the entire group here
+	//	);
 /*	    layer.bindPopup(content, {closeButton: true});
 	};
 
@@ -221,7 +227,7 @@
 	
 	    // Create Slider    
 	    var externalSlider = L.control.sliderControl( {
-		// Set layer below to the first geoJSON
+		// Set layer below to the originally-empty geoJSON layer
 		layer: externalJSON,
 		alwaysShowDate: true,
 	    });
