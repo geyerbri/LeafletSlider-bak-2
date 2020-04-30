@@ -128,21 +128,21 @@
 	}).addTo(map1);
 
 	//Create an empty geoJSON layer
-/*	var group1 = L.geoJSON();
+	var group1 = L.geoJSON();
 	/*
 	// If creating groups of linked markers, remove geoJSON layer above and create an empty layerGroup for each set, below
 	var group1 = L.layerGroup();
 	var group2 = L.layerGroup();
 	*/
 	// Specify function that will load markers, set icons, bind popups with geoJSON content into the specified layer
-/*	function addToGroup1 (feature, layer) {
+	function addToGroup1 (feature, layer) {
   	    group1.addLayer(layer);
   	    var content = "<div style='clear: both'></div><div><h4>" + feature.properties.title + "</h4><p>" + feature.properties.time + "</p><p>" + feature.properties.description + "</p></div>";
 	    /*layer.setIcon( // use this if defining custom icons in geoJSON
 		feature.properties.icon
 		// or define icon settings here
 		); */
-/*	    layer.bindPopup(content, {closeButton: true});
+	    layer.bindPopup(content, {closeButton: true});
 	};
 	/*
 	// If creating multiple groups to be controlled, repeat code for other groups, until all are covered
@@ -157,7 +157,7 @@
 	};
 	*/
 	// Create an options object that uses the functions above for each marker in the group
-/*	var optionsObject1 = {
+	var optionsObject1 = {
   	    // If creating multiple groups, specify an overarching time for all of the items in this group
 	    //time: '1992',
 	    onEachFeature: addToGroup1
@@ -171,7 +171,7 @@
 	}
 	*/
 	// For single group, load dataset, popups, etc. into geoJSON layer
-/*	L.geoJSON(dataset1, optionsObject1);
+	L.geoJSON(dataset1, optionsObject1);
 	/*
 	// For multiple groups, remove function above and instead create new variables for each group, using their dataset and function 
 	var fullGroup1 = L.geoJSON(dataset1, optionsObject1);
@@ -181,9 +181,9 @@
 	var multipleLayerGroups = L.layerGroup([ fullGroup1, fullGroup2 ]);
 	*/
 	// Create Slider
-/*	var sliderControl1 = L.control.sliderControl( {
+	var sliderControl1 = L.control.sliderControl( {
 	    // Set layer below to EITHER the first geoJSON, from the be beginning, OR the final layerGroup containing the array
-	    layer: group1/*multipleLayerGroups*/  /*,
+	    layer: group1/*multipleLayerGroups*/,
 	    alwaysShowDate: true,
 	});
 	
@@ -192,9 +192,9 @@
 	
 	// Initialize the slider
 	sliderControl1.startSlider();
-*/
-// To load external json and create markers with popups that work with LeafletSlider, use the following instead of the above
-// These commands are for a single grouping; for multiple groupings from external json(s), this will need to be modified
+/*
+// To load external JSON and create markers with popups that work with LeafletSlider, use the following instead of the above
+// These commands are for a single grouping; for multiple groupings from external JSON(s), this will need to be modified
 	    
 	// Create an empty geoJSON layer
 	var externalJSON = L.geoJSON();
@@ -207,7 +207,7 @@
 		feature.properties.icon
 		// or define icon settings here
 		); */
-	    layer.bindPopup(content, {closeButton: true});
+/*	    layer.bindPopup(content, {closeButton: true});
 	};
 
 	// Create an options object that uses the functions above for each marker in the group
@@ -232,7 +232,7 @@
 	    // Initialize the slider
 	    externalSlider.startSlider();
 	});
-
+*/
     </script>
 </body>
 
