@@ -5,10 +5,14 @@ The [Leaflet](http://leafletjs.com/) Time-Slider enables you to dynamically add 
 ](http://jqueryui.com/slider/).
 
 
-Check out the [Demo](https://falke-design.github.io/LeafletSlider/)!
+Check out the Falke-Design [Demo](https://falke-design.github.io/LeafletSlider/)!
 
 With two silders [Epoch.html](https://falke-design.github.io/LeafletSlider/examples/epoch.html)!
 
+LeafletSlider with Markers
+-----
+
+For a fully-commented explainer of how to use this slider with popups, see [the geyerbri/LeafletSlider index.html file](https://github.com/geyerbri/LeafletSlider/blob/master/index.html)!
 
 Usage
 -----
@@ -17,7 +21,7 @@ Add:
 * [JQuery](https://cdnjs.com/libraries/jquery)
 * [JQueryUI](https://cdnjs.com/libraries/jqueryui)
 
-to your normal Leaflet map.
+to your normal Leaflet map. Make sure to add both JS and CSS for JQuery and JQueryUI.
 
 
 
